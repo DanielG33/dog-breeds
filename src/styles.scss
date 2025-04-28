@@ -3,20 +3,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Quicksand:wght@400;500;700&display=swap');
 
 :root {
-   /* Primary Palette */
-   --color-primary: #A0D8EF;
-   --color-secondary: #FFD6C2;
-   --color-tertiary: #C6E2D9;
-   --color-accent: #FFB6B9;
+  /* Primary Palette */
+  --color-primary: #A0D8EF;
+  --color-secondary: #FFD6C2;
+  --color-tertiary: #C6E2D9;
+  --color-accent: #FFB6B9;
 
-   /* Text Colors */
-   --color-text: #333;
-   --color-heading: #222;
+  /* Text Colors */
+  --color-text: #333;
+  --color-heading: #232e2a;
 
-   /* Background Colors */
-   --color-bg: #f9f9f9;
-   --color-bg-light: #fff;
-
+  /* Background Colors */
+  --color-bg: #f9f9f9;
+  --color-bg-light: #fff;
 }
 
 * {
@@ -39,13 +38,13 @@ body {
   width: 100%;
   position: relative;
   background:
-    radial-gradient(circle at 7% 32%, #d6eff8 100px, transparent 102px),
-    radial-gradient(circle at 90% 15%, #FFE1D4 170px, transparent 172px),
-    radial-gradient(circle at 50% 90%, #D4EFEA 120px, transparent 122px),
-    radial-gradient(circle at 20% 70%, #FFE6D6 80px, transparent 82px),
-    radial-gradient(circle at 79% 75%, #FFF2B8 100px, transparent 102px),
-    radial-gradient(circle at 40% 50%, #C7F2E3 110px, transparent 112px),
-    radial-gradient(circle at 47% 11%, #ECF7DC 80px, transparent 82px),
+    radial-gradient(circle at 7% 32%, #e8f6fb 100px, transparent 102px),
+    radial-gradient(circle at 90% 15%, #FFEEE6 170px, transparent 172px),
+    radial-gradient(circle at 50% 90%, #e3f7f3 120px, transparent 122px),
+    radial-gradient(circle at 20% 70%, #FFF3EA 80px, transparent 82px),
+    radial-gradient(circle at 79% 75%, #FFF8D2 100px, transparent 102px),
+    radial-gradient(circle at 40% 50%, #d8f8ed 110px, transparent 112px),
+    radial-gradient(circle at 47% 11%, #f4fbe9 80px, transparent 82px),
     var(--color-bg);
   background-repeat: no-repeat;
   background-size: cover;
