@@ -3,7 +3,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 header {
@@ -25,13 +25,12 @@ nav {
 
 ul.nav-links {
   display: flex;
-  list-style: none;
   gap: 24px;
 }
 
 .nav-link {
   position: relative;
-  padding: 4px 12px;
+  padding: 8px 12px;
 
   &::after {
     display: block;
@@ -57,4 +56,6 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
