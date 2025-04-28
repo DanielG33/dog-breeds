@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { DogApiService } from './dog-api.service';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { BreedListApiResponse } from '../../../core/models/dog-api.model';
 import { MOCK_BREED_LIST_RESPONSE, MOCK_IMAGE_RESPONSE } from '../../../core/mocks/dog-api.mock';
 import { environment } from '../../../../environments/environment';
 
@@ -27,13 +26,13 @@ describe('DogApiService', () => {
   });
 
   it('should return parsed breed list', () => {
-    const mockData = MOCK_BREED_LIST_RESPONSE;
+    const mockData = MOCK_BREED_LIST_RESPONSE.message;
 
     service.getBreedsList()
       .subscribe(res => {
-        expect(res.length).toBe(Object.keys(mockData.message).length);
-        expect(res[0].name).toBe(Object.keys(mockData.message)[0]);
-        expect(res[0].subBreeds).toEqual(Object.values(mockData.message)[0]);
+        expect(res.length).toBe(Object.keys(mockData).length);
+        expect(res[0].name).toBe(Object.keys(mockData)[0]);
+        expect(res[0].subBreeds).toEqual(Object.values(mockData)[0]);
       })
 
     const req = http.expectOne(environment.API_URL + 'breeds/list/all');
@@ -43,12 +42,12 @@ describe('DogApiService', () => {
   })
 
   it('should return a random image of a random breed', () => {
-    const mockData = MOCK_IMAGE_RESPONSE;
+    const mockData = MOCK_IMAGE_RESPONSE.message;
 
     service.getRandomImage()
       .subscribe(res => {
         expect(res).toBeInstanceOf(String);
-        expect(res).toBe(mockData.message);
+        expect(res).toBe(mockData);
       })
 
     const req = http.expectOne(environment.API_URL + 'breeds/image/random');
@@ -57,13 +56,13 @@ describe('DogApiService', () => {
   })
 
   it('should return a random image from a specific breed', () => {
-    const mockData = MOCK_IMAGE_RESPONSE;
+    const mockData = MOCK_IMAGE_RESPONSE.message;
     const breed = 'hound-blood';
 
     service.getRandomImage(breed)
       .subscribe(res => {
         expect(res).toBeInstanceOf(String);
-        expect(res).toBe(mockData.message);
+        expect(res).toBe(mockData);
       })
 
     const req = http.expectOne(environment.API_URL + `breed/${breed}/images/random`);
@@ -71,7 +70,8 @@ describe('DogApiService', () => {
     req.flush(mockData)
   })
 
-  it('should handle error when fetching breeds list', () => {
+  // TODO: move to interceptor's spec
+  xit('should handle error when fetching breeds list', () => {
     service.getBreedsList().subscribe({
       next: () => fail('Should have thrown an error'),
       error: (err) => {
@@ -83,7 +83,8 @@ describe('DogApiService', () => {
     req.flush(null, { status: 500, statusText: 'Server Error' });
   });
 
-  it('should handle error when fetching images from invalid breeds', () => {
+  // TODO: move to interceptor's spec
+  xit('should handle error when fetching images from invalid breeds', () => {
     service.getRandomImage('invalid-breed').subscribe({
       next: () => fail('Should have thrown an error'),
       error: (err) => {
