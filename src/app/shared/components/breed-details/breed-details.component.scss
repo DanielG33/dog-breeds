@@ -1,0 +1,9 @@
+img[mat-card-image] {
+  margin-block-start: 1rem;
+  aspect-ratio: 1.2/1;
+  object-fit: cover;
+}
+
+mat-card-actions {
+  justify-content: end;
+}
