@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng deploy --base-href https://danielg33.github.io/dog-breeds/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
