@@ -1,0 +1,32 @@
+:root {
+  --total-columns: 24;
+  --grid-unit: 8px;
+  --gutter: 16px;
+  --container-padding: calc((max((100vw - 1920px), 0px) / 2) + min(140px, 7.3vw));
+  --container-size: calc(100vw - (var(--container-padding) * 2));
+  --column-width: calc((var(--container-size) - (var(--gutter) * (var(--total-columns) - 1))) / var(--total-columns));
+
+  @for $i from 1 through 24 {
+      --col-#{$i}: #{calc((var(--column-width) * $i) + (var(--gutter) * ($i - 1)))};
+  }
+}
+
+@function grid-units($n) {
+  @return calc(var(--grid-unit) * $n);
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+      --total-columns: 12;
+      --gutter: 4px;
+      --container-padding: 14px;
+      @for $i from 13 through 24 {
+          --col-#{$i}: 100%;
+      }
+  }
+}
+
+.container {
+  padding-inline-start: var(--container-padding);
+  padding-inline-end: var(--container-padding);
+}
