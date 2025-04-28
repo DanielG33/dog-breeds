@@ -7,10 +7,10 @@
         </a>
 
         @if (breed.subBreeds.length) {
-          <ul class="sub-breeds-list">
+          <ul class="subBreeds-list">
             @for (sub of breed.subBreeds; track $index) {
               <li>
-                <a href="#" class="breed-item">
+                <a href="#" class="subBreed-item">
                   {{sub | titlecase}}
                 </a>
               </li>
@@ -27,10 +27,10 @@
     <figure class="random-breed">
       <img class="dog-image" [src]="randomBreed.image" alt="Random dog photo">
       <figcaption>
-        <h3>
+        <h3 class="dog-breed">
           {{randomBreed.name | titlecase}}
           @if (randomBreed.subName) {
-            <small>({{randomBreed.subName | titlecase}})</small>
+            <small class="dog-subBreed">({{randomBreed.subName | titlecase}})</small>
           }
         </h3>
       </figcaption>

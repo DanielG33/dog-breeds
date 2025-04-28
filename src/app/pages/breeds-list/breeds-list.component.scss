@@ -15,19 +15,18 @@
   width: var(--col-12);
 }
 
-.sub-breeds-list {
-  .breed-item {
-    padding-inline-start: 2rem;
-  }
-}
-
-.breed-item {
+.breed-item,
+.subBreed-item {
   display: block;
   padding-block: .75rem;
 
   &:hover {
     font-weight: 600;
   }
+}
+
+.subBreed-item {
+  padding-inline-start: 2rem;
 }
 
 .random-breed {
@@ -41,7 +40,7 @@
     object-fit: contain;
   }
 
-  h3 {
+  .dog-breed {
     padding-block-start: 1rem;
     padding-inline-end: .5rem;
   }
