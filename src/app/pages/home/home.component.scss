@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  padding: 0 0 grid-units(5);
+  padding-inline: var(--container-padding);
+  padding-block-end: grid-units(5);
 }
 
 .page-title {
@@ -25,8 +26,39 @@
   margin-bottom: grid-units(2);
 
   img {
+    --size: #{var(--col-6)};
+
     display: block;
-    max-width: var(--col-6);
-    max-height: var(--col-6);
+    max-width: var(--size);
+    max-height: var(--size);
   }
+}
+
+@media only screen and (max-width: 768px)  {
+  :host {
+    justify-content: start;
+    padding-block-start: grid-units(10);
+  }
+
+  .page-title {
+    text-align: center;
+    margin-block: grid-units(4);
+  }
+
+  .page-lead {
+    font-size: 1.25rem;
+
+    br {
+      display: none;
+    }
+  }
+
+  .dogs-container img {
+    --size: #{var(--col-8)};
+
+    &:last-of-type {
+      display: none;
+    }
+  }
+
 }
