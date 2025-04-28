@@ -1,0 +1,39 @@
+<section class="breeds-container">
+  <ul class="breeds-list">
+    @for (breed of breeds; track breed.name) {
+      <li>
+        <a href="#" class="breed-item">
+          {{breed.name | titlecase}}
+        </a>
+
+        @if (breed.subBreeds.length) {
+          <ul class="sub-breeds-list">
+            @for (sub of breed.subBreeds; track $index) {
+              <li>
+                <a href="#" class="breed-item">
+                  {{sub | titlecase}}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ul>
+</section>
+
+@if (randomBreed) {
+  <aside class="random-breed-container">
+    <figure class="random-breed">
+      <img class="dog-image" [src]="randomBreed.image" alt="Random dog photo">
+      <figcaption>
+        <h3>
+          {{randomBreed.name | titlecase}}
+          @if (randomBreed.subName) {
+            <small>({{randomBreed.subName | titlecase}})</small>
+          }
+        </h3>
+      </figcaption>
+    </figure>
+  </aside>
+}

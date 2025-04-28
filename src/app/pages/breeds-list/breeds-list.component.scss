@@ -1,0 +1,48 @@
+@import "../../../styles/functions/grid-units";
+
+:host {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  padding-block-start: grid-units(8);
+  padding-inline: var(--container-padding);
+  display: grid;
+  grid-template-columns: var(--col-10) auto;
+  justify-content: space-between;
+}
+
+.breeds-container {
+  width: var(--col-12);
+}
+
+.sub-breeds-list {
+  .breed-item {
+    padding-inline-start: 2rem;
+  }
+}
+
+.breed-item {
+  display: block;
+  padding-block: .75rem;
+
+  &:hover {
+    font-weight: 600;
+  }
+}
+
+.random-breed {
+  position: sticky;
+  top: grid-units(-6);
+  text-align: end;
+  img {
+    display: block;
+    max-width: var(--col-10);
+    max-height: var(--col-10);
+    object-fit: contain;
+  }
+
+  h3 {
+    padding-block-start: 1rem;
+    padding-inline-end: .5rem;
+  }
+}
