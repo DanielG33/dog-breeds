@@ -4,19 +4,19 @@
   position: relative;
   height: 100%;
   overflow: auto;
-  padding-block-start: grid-units(8);
+  padding-block: grid-units(8);
   padding-inline: var(--container-padding);
   display: grid;
   grid-template-columns: var(--col-10) auto;
   justify-content: space-between;
 }
 
-.searchbar-container {
-  width: var(--col-6);
-}
-
 .breeds-container {
   width: var(--col-12);
+}
+
+.searchbar-container {
+  width: var(--col-6);
 }
 
 .breed-item,
@@ -53,5 +53,34 @@
   .dog-breed {
     padding-block-start: 1rem;
     padding-inline-end: .5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  :host {
+    padding-block: grid-units(4);
+    padding-inline: var(--container-padding);
+    display: block;
+  }
+
+  .breeds-container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .searchbar-container {
+    width: 100%;
+    position: sticky;
+    top: 0;
+  }
+
+  .breeds-list {
+    padding-inline: grid-units(4);
+    font-size: 1.25rem;
+  }
+
+  .random-breed-container {
+    // TODO: find a way to adapt this block to mobile screens
+    display: none !important;
   }
 }
