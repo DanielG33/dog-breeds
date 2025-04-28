@@ -5,10 +5,10 @@
     </a>
     <ul class="nav-links">
       <li>
-        <a routerLink="/" class="nav-link active">Home</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Home</a>
       </li>
       <li>
-        <a routerLink="/" class="nav-link">Breeds list</a>
+        <a routerLink="/breeds" routerLinkActive="active" class="nav-link">Breeds list</a>
       </li>
     </ul>
   </nav>
