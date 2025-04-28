@@ -1,9 +1,14 @@
-<header class="container">
-  <nav>
-    <a routerLink="/" class="logo">
-      <app-logo />
-    </a>
-    <ul class="nav-links">
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer #drawer mode="over">
+    <section role="header" class="mobile-nav-header">
+      <img class="dog-image" src="https://images.dog.ceo/breeds/pointer-germanlonghair/hans4.jpg" alt="">
+
+      <p class="mobile-nav-greet">
+        Hello! <mat-icon>pets</mat-icon>
+      </p>
+    </section>
+
+    <ul class="mobile-nav-links">
       <li>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Home</a>
       </li>
@@ -11,9 +16,34 @@
         <a routerLink="/breeds" routerLinkActive="active" class="nav-link">Breeds list</a>
       </li>
     </ul>
-  </nav>
-</header>
+  </mat-drawer>
 
-<main>
-  <router-outlet />
-</main>
+  <mat-drawer-content>
+    <header class="container">
+      <nav>
+        <a routerLink="/" class="logo">
+          <app-logo />
+        </a>
+
+        <!-- Desktop-only navigation  -->
+        <ul class="nav-links">
+          <li>
+            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">Home</a>
+          </li>
+          <li>
+            <a routerLink="/breeds" routerLinkActive="active" class="nav-link">Breeds list</a>
+          </li>
+        </ul>
+
+        <!-- Mobile-only navigation toggle -->
+        <button mat-icon-button class="mobile-nav-toggle" (click)="drawer.toggle()" aria-label="Sidemenu toggle button">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <router-outlet />
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>
