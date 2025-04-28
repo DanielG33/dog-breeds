@@ -1,9 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, model, OnInit, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { DogApiService } from '../../shared/services/dog-api/dog-api.service';
 import { Breed } from '../../core/models/breed.model';
 import { TitleCasePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { BreedDetailsComponent } from '../../shared/components/breed-details/breed-details.component';
 import { lastValueFrom } from 'rxjs';
 
@@ -11,7 +16,12 @@ import { lastValueFrom } from 'rxjs';
   selector: 'app-breeds-list',
   imports: [
     MatListModule,
-    TitleCasePipe
+    TitleCasePipe,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './breeds-list.component.html',
   styleUrl: './breeds-list.component.scss'
@@ -20,12 +30,24 @@ export class BreedsListComponent implements OnInit {
   private readonly apiService = inject(DogApiService);
   private readonly dialog = inject(MatDialog)
 
-  public breeds: Breed[] = [];
+  public filterInput = model('');
+  private _breeds = signal<Breed[]>([]);
+  public breeds = computed<Breed[]>(() =>
+    this._breeds()
+    .filter(breed =>
+      [breed.name, ...breed.subBreeds].join(' ').includes(this.filterInput().toLowerCase().trim())
+    )
+  );
+
   public randomBreed!: { name: string, subName?: string, path: string[], image: string };
 
   ngOnInit(): void {
     this.getBreeds();
     this.getRandomBreed();
+  }
+
+  public clearFilter() {
+    this.filterInput.set('');
   }
 
   public async openBreedDialog(breed: string, subBreed?: string) {
@@ -43,7 +65,7 @@ export class BreedsListComponent implements OnInit {
   private getBreeds() {
     this.apiService.getBreedsList()
       .subscribe(breeds => {
-        this.breeds = breeds;
+        this._breeds.set([...breeds]);
       })
   }
 
