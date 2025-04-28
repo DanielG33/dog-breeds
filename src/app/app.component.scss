@@ -1,0 +1,60 @@
+@import '../styles/functions/grid-units';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding-block-start: grid-units(2);
+  padding-block-end: grid-units(2);
+}
+
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .logo {
+    position: absolute;
+    left: 0;
+  }
+}
+
+ul.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+.nav-link {
+  position: relative;
+  padding: 4px 12px;
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; // grows on .active
+    height: 3px;
+    border-radius: 3px;
+    background-color: var(--color-heading);
+    transition: ease width 100ms;
+  }
+
+  &.active::after {
+    width: 100%;
+  }
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}

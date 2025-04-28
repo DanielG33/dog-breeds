@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { LogoComponent } from './shared/components/logo/logo.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    RouterModule,
+    RouterOutlet,
+    LogoComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
