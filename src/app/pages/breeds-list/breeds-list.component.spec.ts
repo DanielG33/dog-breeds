@@ -48,7 +48,7 @@ describe('BreedsListComponent', () => {
 
   it('should fetch and set breeds list on init', () => {
     expect(mockDogApiService.getBreedsList).toHaveBeenCalled();
-    expect(component.breeds).toEqual(mockBreeds);
+    expect(component.breeds()).toEqual(mockBreeds);
   });
 
   it('should fetch a random image and set randomBreed on init', () => {
@@ -68,7 +68,7 @@ describe('BreedsListComponent', () => {
       return acc.concat(val.subBreeds);
     }, [])
 
-    expect(breedElements.length).toBe(component.breeds.length);
+    expect(breedElements.length).toBe(component.breeds().length);
     expect(subBreedElements.length).toBe(subBreeds.length);
   });
 
@@ -82,4 +82,29 @@ describe('BreedsListComponent', () => {
     expect((<HTMLElement>breedNameElement.nativeElement).textContent?.toLowerCase()).toContain(component.randomBreed.name);
     expect((<HTMLElement>subBreedNaneElement.nativeElement).textContent?.toLowerCase()).toContain(component.randomBreed.subName);
   });
+
+  it('should filter breeds list by breed and sub-breeds on input change', () => {
+    const localMockBreeds: Breed[] = [
+      { name: 'australian', subBreeds: ['kelpie', 'sheperd'] },
+      { name: 'dane', subBreeds: ['great'] },
+      { name: 'kelpie', subBreeds: [] },
+    ];
+
+    mockDogApiService.getBreedsList.and.returnValue(of(localMockBreeds));
+    fixture = TestBed.createComponent(BreedsListComponent);
+    component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
+    fixture.detectChanges();
+
+    const inputElement: HTMLInputElement = debugElement.query(By.css('.searchbar')).nativeElement;
+
+    inputElement.value = 'kelpie'; // should return kelpie and also australian because of its sub-breeds
+    inputElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    const breedElements = debugElement.queryAll(By.css('.breed-item'));
+    expect(breedElements.length).toBe(2);
+    expect((<HTMLElement>breedElements[0].nativeElement).textContent?.toLowerCase()).toContain('australian');
+    expect((<HTMLElement>breedElements[1].nativeElement).textContent?.toLowerCase()).toContain('kelpie');
+  })
 });

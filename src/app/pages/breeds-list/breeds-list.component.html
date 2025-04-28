@@ -2,7 +2,7 @@
   <mat-form-field class="searchbar-container" appearance="fill">
     <mat-icon matPrefix>pets</mat-icon>
     <mat-label>Search...</mat-label>
-    <input matInput [(ngModel)]="filterInput">
+    <input matInput class="searchbar" [(ngModel)]="filterInput">
     @if (filterInput()) {
       <button matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
         <mat-icon>close</mat-icon>
