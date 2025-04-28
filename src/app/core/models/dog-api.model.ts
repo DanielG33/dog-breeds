@@ -1,11 +1,10 @@
 type API_STATUS = 'success' | 'error'
 
-export interface BreedListApiResponse {
-  message: Record<string, string[]>,
-  status: API_STATUS
+export interface BaseApiResponse<T> {
+  message: T;
+  status: API_STATUS;
 }
 
-export interface BreedImageApiResponse {
-  message: string,
-  status: API_STATUS
-}
+export type BreedListApiResponse = BaseApiResponse<Record<string, string[]>>;
+
+export type BreedImageApiResponse = BaseApiResponse<string>;

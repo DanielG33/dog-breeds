@@ -13,4 +13,12 @@
     filled-active-indicator-color: var(--color-primary-dark),
     filled-container-color: var(--color-primary-light),
   ));
+
+  @include mat.sidenav-overrides((
+    content-background-color: transparent,
+  ));
+}
+
+mat-drawer-container {
+  height: 100%;
 }
