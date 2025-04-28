@@ -74,7 +74,9 @@ describe('BreedDetailsComponent', () => {
   })
 
   it('should emit onRefresh() on refresh button click', () => {
-    const btnElement = debugElement.query(By.css('.refresh-btn'));
+    spyOn(component.onRefresh, 'emit');
+
+    const btnElement = debugElement.query(By.css('.btn-refresh'));
 
     btnElement.triggerEventHandler('click', null);
 

@@ -18,11 +18,17 @@
 .breed-item,
 .subBreed-item {
   display: block;
-  padding-block: .75rem;
+  cursor: pointer;
 
-  &:hover {
-    font-weight: 600;
+  span {
+    display: block;
+    padding-block: .75rem;
+
+    &:hover {
+      font-weight: 600;
+    }
   }
+
 }
 
 .subBreed-item {

@@ -1,18 +1,18 @@
 <section class="breeds-container">
   <ul class="breeds-list">
     @for (breed of breeds; track breed.name) {
-      <li>
-        <a href="#" class="breed-item">
+      <li class="breed-item">
+        <span (click)="openBreedDialog(breed.name)" role="button">
           {{breed.name | titlecase}}
-        </a>
+        </span>
 
         @if (breed.subBreeds.length) {
           <ul class="subBreeds-list">
             @for (sub of breed.subBreeds; track $index) {
-              <li>
-                <a href="#" class="subBreed-item">
+              <li class="subBreed-item">
+                <span role="button" (click)="openBreedDialog(breed.name, sub)">
                   {{sub | titlecase}}
-                </a>
+                </span>
               </li>
             }
           </ul>
