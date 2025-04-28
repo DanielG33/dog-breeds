@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.theme((
+    typography: (
+      plain-family: Quicksand,
+    ),
+  ));
+
+  @include mat.form-field-overrides((
+    filled-caret-color: var(--color-primary-dark),
+    filled-focus-active-indicator-color: var(--color-primary-dark),
+    filled-active-indicator-color: var(--color-primary-dark),
+    filled-container-color: var(--color-primary-light),
+  ));
+}

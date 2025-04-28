@@ -1,5 +1,5 @@
-@use '@angular/material' as mat;
-@use './styles/layout.scss';
+@use './styles/material_theme';
+@use './styles/layout';
 
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Quicksand:wght@400;500;700&display=swap');
 
@@ -9,6 +9,18 @@
   --color-secondary: #FFD6C2;
   --color-tertiary: #C6E2D9;
   --color-accent: #FFB6B9;
+
+  /* Lighter Palette for Subtle Backgrounds */
+  --color-primary-light: #E5F5FB;
+  --color-secondary-light: #FFF1EA;
+  --color-tertiary-light: #E9F7F3;
+  --color-accent-light: #FFE6E7;
+
+  /* Dark Palette for Highlights */
+  --color-primary-dark: #317A94;
+  --color-secondary-dark: #A86447;
+  --color-tertiary-dark: #4D7B73;
+  --color-accent-dark: #A65255;
 
   /* Text Colors */
   --color-text: #333;
@@ -23,14 +35,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  @include mat.theme((
-    typography: (
-      plain-family: Quicksand,
-    ),
-  ));
 }
 
 html, body { height: 100%; }
