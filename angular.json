@@ -104,6 +104,9 @@
             "scripts": [],
             "browsers": "ChromeHeadless"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
